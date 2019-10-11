@@ -97,13 +97,61 @@ class SortingRobot:
         Sort the robot's list.
         """
         # Fill this out
-        arr = self._list
 
-        for i in range(0,len(arr)-1):
-            for j in range(0, len(arr)-1):
-                if arr[j] > arr[j+1]:
-                    arr[j], arr[j+1]=arr[j+1], arr[j]
-        return arr
+
+        # print(self._position)
+        self.swap_item()
+        # print(f"Item being held  {self._item}")
+        self.move_right()
+        # print(self._position)
+
+        while(self.can_move_right() == True):
+            print(f"Item being held  {self._item}")
+            print(f"Index Position  {self._position}")
+
+
+            if self.compare_item() == 1:
+                self.swap_item()
+                self.move_left()
+                self.swap_item()
+                self.move_right()
+                self.swap_item()
+                self.move_right()
+
+            elif self.compare_item() == -1:
+                self.swap_item()
+                self.move_right()
+
+
+            elif self.can_move_right() == False:
+                break
+
+
+
+
+        # while True:
+        #     if self.can_move_right() == False:
+        #         break
+        #     elif self.compare_item() == 1:
+        #         print("greater")
+        #         self.swap_item()
+        #         self.move_right()
+        #     elif self.compare_item() == -1:
+        #         print("smaller")
+        #         self.move_right()
+        #         self.swap_item()
+        #         self.move_right()
+
+
+
+
+
+
+        # for i in range(0,len(arr)-1):
+        #     for j in range(0, len(arr)-1):
+        #         if arr[j] > arr[j+1]:
+        #             arr[j], arr[j+1]=arr[j+1], arr[j]
+        # return arr
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
